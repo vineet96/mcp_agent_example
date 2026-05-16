@@ -58,6 +58,10 @@ an external SaaS, your own VPC. The agent connects via
 `StreamableHTTPConnectionParams(url=...)` and treats the server's tools
 as if they were native ADK tools.
 
+<img width="1800" height="1145" alt="mcp_weather_agent_architecture" src="https://github.com/user-attachments/assets/d5c389a4-48d2-454e-bf45-772c79a83f3c" />
+
+
+
 ## Local development
 
 ### 1. Run the MCP server locally

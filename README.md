@@ -33,34 +33,7 @@ wild. The agent doesn't care.
 
 ## Architecture
 
-```
-┌───────────────────────────────────┐         ┌──────────────────────┐
-│  GCP Agent Platform               │         │  Cloud Run           │
-│  · Agent Runtime                  │         │  (or anywhere else)  │
-│                                   │         │                      │
-│  ┌─────────────────────────────┐  │  HTTPS  │  ┌────────────────┐  │
-│  │ mcp_weather_agent           │  │ ──────► │  │ weather_mcp    │  │
-│  │ (LlmAgent + McpToolset)     │  │  /mcp   │  │ (FastMCP)      │  │
-│  └─────────────────────────────┘  │ ◄────── │  └────────────────┘  │
-│         Gemini 2.5 Flash          │  JSON   │                      │
-└───────────────────────────────────┘         └──────────────────────┘
-
-           User chat                                External API
-              ▲                                  (Open-Meteo, in this
-              │                                   example — could be
-       Gemini Enterprise                          any third-party API)
-       or any front-end
-       that speaks Agent API
-```
-
-The MCP server can live anywhere reachable over HTTPS — Cloud Run, GKE,
-an external SaaS, your own VPC. The agent connects via
-`StreamableHTTPConnectionParams(url=...)` and treats the server's tools
-as if they were native ADK tools.
-
 <img width="1800" height="1145" alt="mcp_weather_agent_architecture" src="https://github.com/user-attachments/assets/d5c389a4-48d2-454e-bf45-772c79a83f3c" />
-
-
 
 ## Local development
 
